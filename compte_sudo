@@ -13,3 +13,9 @@ toto ALL=(ALL:ALL) ALL
 #créer un fichier 
 /.ssh$ nano authorized_keys
 coller votre cléf public
+
+#désactiver le compte root editer le fichier
+/etc/ssh/sshd_config
+#modifer cette ligne
+
+PermitRootLogin no
