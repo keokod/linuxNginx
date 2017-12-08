@@ -26,7 +26,7 @@ nano /etc/ssh/sshd_config
 #redémarer ssh
 /etc/init.d/ssh restart
 [ ok ] Restarting ssh (via systemctl): ssh.service.
-root@vps470685:/home/fstack# netstat -tnplv | grep ssh
+root@vps470685:/home/toto# netstat -tnplv | grep ssh
 tcp        0      0 0.0.0.0:12          0.0.0.0:*               LISTEN      3550/sshd           
 tcp6       0      0 :::12                :::*                    LISTEN      3550/sshd         
 
