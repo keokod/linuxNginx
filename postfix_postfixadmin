@@ -1,0 +1,26 @@
+apt-get install postfix postfix-mysql
+
+#choix Postfix Configuration 
+Internet Site 
+#Postfix Configuration 
+pandan.ohkod.fr
+
+#creer bdd pour postfix
+MariaDB [(none)]> CREATE database postfix;
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [(none)]> CREATE USER 'postfix'@'localhost' IDENTIFIED BY 'root';
+Query OK, 0 rows affected (0.00 sec)
+
+MariaDB [(none)]> GRANT USAGE ON *.* TO 'postfix'@'localhost';
+Query OK, 0 rows affected (0.00 sec)
+
+MariaDB [(none)]> GRANT ALL PRIVILEGES ON postfix.* TO 'postfix'@'localhost';
+Query OK, 0 rows affected (0.00 sec)
+
+#Télécharger postfixadmin et le mettre au dossier web serveur
+
+#donner la propriétaire à www-data
+chown -R www-data:www-data postfixadmin
+
+#installer php-imap
