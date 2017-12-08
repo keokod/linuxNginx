@@ -31,4 +31,4 @@ tcp        0      0 0.0.0.0:12          0.0.0.0:*               LISTEN      3550
 tcp6       0      0 :::12                :::*                    LISTEN      3550/sshd         
 
 #test si la connexion ssh fonctionne
-ssh user@ip -p 22
+ssh user@ip -p 12
