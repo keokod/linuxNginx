@@ -1,0 +1,6 @@
+apt-get install postfix postfix-mysql
+
+#choix Postfix Configuration 
+Internet Site 
+#Postfix Configuration 
+pandan.ohkod.fr
