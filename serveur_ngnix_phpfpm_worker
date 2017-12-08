@@ -34,32 +34,63 @@ Dec 08 16:51:15 nginx[3601]: nginx: the configuration file /etc/nginx/nginx.conf
 Dec 08 16:51:15  nginx[3601]: nginx: configuration file /etc/nginx/nginx.conf test is successful
 Dec 08 16:51:15  systemd[1]: nginx.service: Failed to read PID from file /var/run/nginx.pid: Invalid argument
 Dec 08 16:51:15 systemd[1]: Started nginx - high performance web server.
-/etc/nginx# mkdir sites-available
 
-#créer un dossier site-availables
-nano /etc/nginx/sites-available/default
-root@srvtoto:/etc/nginx/sites-available# nginx -t 
+#modifier le fichier !!attention au espace sinon risque d'erreur
+#indisquer le dossier racine, 
+nano /etc/nginx/conf.d/default.conf 
+  GNU nano 2.7.4                         File: /etc/nginx/conf.d/default.conf                                   
+
+server {
+    listen       80;
+    server_name  localhost;
+    sendfile off;
+
+        root   /usr/share/nginx/html; #ajourter dossier racine 
+
+    #charset koi8-r;
+    #access_log  /var/log/nginx/host.access.log  main;
+
+    location / {
+       # root   /usr/share/nginx/html;
+        index index.php index.html index.htm; #ajouter au boot aller sur index.php
+    }
+
+    location ~ \.php$ {
+
+        try_files $uri  =404;
+        fastcgi_pass unix:/var/run/php/php7.0-fpm.sock;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+
+#test fichier configuration
+nginx -t
 nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
 nginx: configuration file /etc/nginx/nginx.conf test is successful
-root@srvtoto:/etc/nginx/sites-available# systemctl restart nginx
-root@srvtoto:/etc/nginx/sites-available# systemctl status nginx
+
+#redémarer nginx 
+systemctl restart nginx
+systemctl status nginx
 ● nginx.service - nginx - high performance web server
    Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)
-   Active: active (running) since Fri 2017-12-08 17:16:35 CET; 9s ago
+   Active: active (running) since Fri 2017-12-08 21:46:47 CET; 7s ago
      Docs: http://nginx.org/en/docs/
-  Process: 3740 ExecStop=/bin/kill -s TERM $MAINPID (code=exited, status=0/SUCCESS)
-  Process: 3745 ExecStart=/usr/sbin/nginx -c /etc/nginx/nginx.conf (code=exited, status=0/SUCCESS)
-  Process: 3742 ExecStartPre=/usr/sbin/nginx -t -c /etc/nginx/nginx.conf (code=exited, status=0/SUCCESS)
- Main PID: 3747 (nginx)
+  Process: 4380 ExecStop=/bin/kill -s TERM $MAINPID (code=exited, status=0/SUCCESS)
+  Process: 4385 ExecStart=/usr/sbin/nginx -c /etc/nginx/nginx.conf (code=exited, status=0/SUCCESS)
+  Process: 4382 ExecStartPre=/usr/sbin/nginx -t -c /etc/nginx/nginx.conf (code=exited, status=0/SUCCESS)
+ Main PID: 4387 (nginx)
     Tasks: 2 (limit: 4915)
    CGroup: /system.slice/nginx.service
-           ├─3747 nginx: master process /usr/sbin/nginx -c /etc/nginx/nginx.conf
-           └─3748 nginx: worker process
+           ├─4387 nginx: master process /usr/sbin/nginx -c /etc/nginx/nginx.conf
+           └─4388 nginx: worker process
 
-Dec 08 17:16:35 srvtoto systemd[1]: Stopped nginx - high performance web server.
-Dec 08 17:16:35 srvtoto systemd[1]: Starting nginx - high performance web server...
-Dec 08 17:16:35 srvtoto nginx[3742]: nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
-Dec 08 17:16:35 srvtoto nginx[3742]: nginx: configuration file /etc/nginx/nginx.conf test is successful
-Dec 08 17:16:35 srvtoto systemd[1]: nginx.service: Failed to read PID from file /var/run/nginx.pid: Invalid argument
-Dec 08 17:16:35 srvtoto systemd[1]: Started nginx - high performance web server.
-root@srvtoto:/etc/nginx/sites-available# cd /usr/share/nginx/html
+#editer un fichier index.php
+
+nano /usr/share/nginx/html/index.php
+#ecrire un test
+<?php phpinfo()
+
+#vous devirez avoir la page page phpinfo
+
+
