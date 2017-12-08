@@ -1,0 +1,35 @@
+sudo nano /etc/apt/sources.list
+
+#ajouter ceci
+deb http://packages.dotdeb.org jessie all
+deb http://nginx.org/packages/mainline/debian/ jessie nginx
+
+cd /tmp
+ 
+wget http://www.dotdeb.org/dotdeb.gpg
+sudo apt-key add dotdeb.gpg
+
+wget http://nginx.org/keys/nginx_signing.key
+sudo apt-key add nginx_signing.key
+
+#aller dans tmp
+/tmp$ sudo apt-key add dotdeb.gpg
+OK
+wget http://nginx.org/keys/nginx_signing.key
+--2017-12-08 11:45:45--  http://nginx.org/keys/nginx_signing.key
+Resolving nginx.org (nginx.org)... 206.251.255.63, 95.211.80.227, 2606:7100:1:69::3f, ...
+Connecting to nginx.org (nginx.org)|206.251.255.63|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 1561 (1.5K) [text/plain]
+Saving to: 'nginx_signing.key'
+
+nginx_signing.key         100%[=====================================>]   1.52K  --.-KB/s    in 0s      
+
+2017-12-08 11:45:45 (208 MB/s) - 'nginx_signing.key' saved [1561/1561]
+
+#mettre à jours
+sudo apt-get update
+
+sudo apt-get install nginx php7.0 php7.0-fpm php7.0-gd php7.0-mysql php7.0-cli php7.0-common php7.0-curl php7.0-opcache php7.0-json php7.0-imap
+
+
