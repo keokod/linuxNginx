@@ -21,3 +21,5 @@ coller votre cléf public
 PermitRootLogin no
 
 #redemarrer le serveur
+#on peut se connecter via toto en utilisant cette commande
+su root
