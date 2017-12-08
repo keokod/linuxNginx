@@ -26,3 +26,20 @@ chown -R www-data:www-data postfixadmin
 #installer php-imap
 sudo apt-get install php7.0-imap
 
+#modifier config.in.php de postfixadmin
+$CONF['configured'] = true;
+
+// In order to setup Postfixadmin, you MUST specify a hashed password here.
+// To create the hash, visit setup.php in a browser and type a password into the field,
+// on submission it will be echoed out to you as a hashed value.
+$CONF['setup_password'] = 'changeme';
+
+// Language config
+// Language files are located in './languages', change as required..
+$CONF['default_language'] = 'fr';
+
+// Hook to override or add translations in $PALANG
+// Set to the function name you want to use as hook function (see language_hook example function below)
+$CONF['language_hook'] = '';
+
+
