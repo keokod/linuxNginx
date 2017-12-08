@@ -38,8 +38,32 @@ $CONF['setup_password'] = 'changeme';
 // Language files are located in './languages', change as required..
 $CONF['default_language'] = 'fr';
 
+#à la racine créer un dossier templates_c
+sudo mkdir templates_c
+
 // Hook to override or add translations in $PALANG
 // Set to the function name you want to use as hook function (see language_hook example function below)
 $CONF['language_hook'] = '';
+
+
+### changer le mots de passe
+$CONF['database_type'] = 'mysqli';
+$CONF['database_host'] = 'localhost';
+$CONF['database_user'] = 'postfix';
+$CONF['database_password'] = 'root';
+$CONF['database_name'] = 'postfix';
+
+#installer mbstring
+sudo apt-get install php-mbstring
+sudo: unable to resolve host pandan
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following additional packages will be installed:
+  php7.0-mbstring
+
+
+#une fois la validation du setup indiquer un mot de passe , récupérer la cléf et la remplacer dans config.inc.php
+$CONF['setup_password'] = 'XXXXX'
 
 
