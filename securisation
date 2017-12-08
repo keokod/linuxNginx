@@ -1,0 +1,21 @@
+#installer nmap
+apt-get install nmap
+
+#regarder les ports ouvert exemple
+nmap 127.0.0.1
+
+Not shown: 999 closed ports
+PORT   STATE SERVICE
+22/tcp open  ssh
+
+#installer ufw pour ouvrir des ports
+apt-get install ufw
+ 
+sudo ufw enable
+Command may disrupt existing ssh connections. Proceed with operation (y|n)? y
+Firewall is active and enabled on system startup
+
+#exemple ouvrir port 7000
+sudo ufw allow 7000 
+Rule added
+Rule added (v6)
