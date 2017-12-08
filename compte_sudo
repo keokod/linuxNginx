@@ -19,3 +19,5 @@ coller votre cléf public
 #modifer cette ligne
 
 PermitRootLogin no
+
+#redemarrer le serveur
