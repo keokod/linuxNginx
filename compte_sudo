@@ -6,3 +6,10 @@ nano /etc/sudoers
 # User privilege specification
 root    ALL=(ALL:ALL) ALL
 toto ALL=(ALL:ALL) ALL
+
+# premettre de se connecter avec clef ssh
+#créer un dossier .ssh
+/home/toto mkdir .ssh
+#créer un fichier 
+/.ssh$ nano authorized_keys
+coller votre cléf public
