@@ -1,0 +1,10 @@
+sudo apt-get install software-properties-common dirmngr
+sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 0xF1656F24C74CD1D8
+sudo add-apt-repository 'deb [arch=amd64,i386,ppc64el] http://mariadb.mirrors.ovh.net/MariaDB/repo/10.2/debian stretch main'
+
+sudo apt-get update
+sudo apt-get install mariadb-server
+
+#taper un mot de passe pour mysql root
+
+#se connecter en console en tant que root et créer un utilisateur
