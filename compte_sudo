@@ -14,7 +14,7 @@ toto ALL=(ALL:ALL) ALL
 /.ssh$ nano authorized_keys
 coller votre cléf public
 
-#désactiver le compte root editer le fichier
+#désactiver le compte root editer le fichier , pour se connecter en root il faudra se connecter en mode rescue(ovh)
 /etc/ssh/sshd_config
 #modifer cette ligne
 
