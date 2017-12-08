@@ -1,0 +1,8 @@
+#créer un compte admin autre que root
+adduser toto
+nano /etc/sudoers
+
+-----------------------------
+# User privilege specification
+root    ALL=(ALL:ALL) ALL
+toto ALL=(ALL:ALL) ALL
