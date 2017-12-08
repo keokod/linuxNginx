@@ -15,7 +15,20 @@ sudo ufw enable
 Command may disrupt existing ssh connections. Proceed with operation (y|n)? y
 Firewall is active and enabled on system startup
 
-#exemple ouvrir port 7000
-sudo ufw allow 7000 
+#exemple ouvrir port 12
+sudo ufw allow 12
 Rule added
 Rule added (v6)
+
+#editer ce fichier pour utiliser un autre port 22 pour se connecter en ssh
+nano /etc/ssh/sshd_config
+#ajouter une ligne  "port 12" dans ce fichier
+#redémarer ssh
+/etc/init.d/ssh restart
+[ ok ] Restarting ssh (via systemctl): ssh.service.
+root@vps470685:/home/fstack# netstat -tnplv | grep ssh
+tcp        0      0 0.0.0.0:12          0.0.0.0:*               LISTEN      3550/sshd           
+tcp6       0      0 :::12                :::*                    LISTEN      3550/sshd         
+
+#test si la connexion ssh fonctionne
+ssh user@ip -p 22
