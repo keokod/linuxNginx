@@ -17,4 +17,6 @@ ufw allow 25
 ufw allow 993
 ufw allow 857
 
+host -t MX ohkod.fr
+ohkod.fr mail is handled by 1 pandan.ohkod.fr.
 
