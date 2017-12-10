@@ -3,11 +3,11 @@ ssh-keygen -b 4096
 #si on entre une paraphrase , elle sera demandé lors de la connexion ssh
 
 Generating public/private rsa key pair.
-Enter file in which to save the key (/home/keo/.ssh/id_rsa): 
+Enter file in which to save the key (/home//.ssh/id_rsa): 
 Enter passphrase (empty for no passphrase): 
 Enter same passphrase again: 
-Your identification has been saved in /home/keo/.ssh/id_rsa.
-Your public key has been saved in /home/keo/.ssh/id_rsa.pub.
+Your identification has been saved in /home//.ssh/id_rsa.
+Your public key has been saved in /home//.ssh/id_rsa.pub.
 The key fingerprint is:
 SHA256:8QxEs0Z9Ng78s4xeSdRpP8VlYYL9uEyldxpkj4YXJNE 
 The key's randomart image is:
@@ -24,7 +24,7 @@ The key's randomart image is:
 +----[SHA256]-----+
 
 #la clef pubic se trouve ici
- /home/keo/.ssh/id_rsa.pub
+ /home//.ssh/id_rsa.pub
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDgwzufbRQuHBFhOymKFQgYBw8eWk5iFoL1ma0wJfy9Q6t3RVTrQ+HlRCvmrwme9aq/jbxjDilke5A3V02tvOsypHyXi+VKanSGFT0gaHEhuC0Lw0rneDhzxomnqLmFj118Bqka+5NjSqzBXhPZSKJM7x7wlnLZ+PidaRWjw5tEN8nQtfIi0o4Qo3poo6VW3onp0nIPu4jNgm4hEYPck4L/5rIHDkG3C4eu5jbfcwstky3ziVgKDBO+glfhIroBULbf2MIrryif10g/YkHVY6NEJ1tnobkIEzlSoXVoPilOoRI+SVBPFL173Tv88nONA4OFnoUVegn7JdAak0xtq0hcnzjfScewpJQTjpQiTUSQPpbBgHAph3x9QafKO4lekerYDIkxIZzgLl+vJ+cXzfvtf5ImIdHjUzXkeZGesTRh4GDpOW9sxlqeI2vBhcqA5iHdAV+QkjhbJpdIU6TK+NVqB5DRPBq0Hd7XiuPJVbXwEuDpm9vP2AkFHzhb4j7Hr2RHreLj5o+7gJhUb89NZHZAmVZKMHjgiKP391CQU4/ogI1d7HD9Ov5RLaRZJBca0ySQGs6qSJSVO0kjPaWc4wXxRcZ27VZHSu0Jq9NbXIqe1WGkmJRGegLpP7v67xoBsmvj3Av/p2jmo6FzSQt1WxO8RogUuUi2w6RgbFupahEvKQ== 
 
 #info
