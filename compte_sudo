@@ -18,6 +18,8 @@ coller votre cléf public
 /etc/ssh/sshd_config
 #modifer cette ligne
 
+firewall ouvrir port
+
 PermitRootLogin no
 netstat -tnplv | grep ssh
 
