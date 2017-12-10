@@ -19,6 +19,7 @@ coller votre cléf public
 #modifer cette ligne
 
 PermitRootLogin no
+netstat -tnplv | grep ssh
 
 #redemarrer le serveur
 #on peut se connecter via toto en utilisant cette commande
