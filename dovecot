@@ -72,6 +72,62 @@ userdb {
   args = uid=vmail gid=vmail home=/var/mail/vhosts/%d/%n
 }
 
+/etc/dovecot/dovecot-sql.conf.ext
+
+# Paramètres de connexion
+driver = mysql
+connect = host=127.0.0.1 dbname=postfix user=postfix password=MOT DE PASSE
+
+# Permet de définir l'algorithme de hachage.
+# Pour plus d'information: http://wiki2.dovecot.org/Authentication/PasswordSchemes
+# /!\ ATTENTION : ne pas oublier de modifier le paramètre $CONF['encrypt'] de PostfixAdmin
+default_pass_scheme = MD5-CRYPT
+
+# Requête de récupération du mot de passe du compte utilisateur
+password_query = SELECT password FROM mailbox WHERE username = '%u'
+
+chown -R vmail:dovecot /etc/dovecot
+chmod -R o-rwx /etc/dovecot 
+
+/etc/dovecot/conf.d/10-ssl.conf
+
+ssl = required
+ssl_cert = </etc/ssl/certs/mailserver.crt
+ssl_key = </etc/ssl/private/mailserver.key
+ssl_protocols = !SSLv2 !SSLv3
+ssl_cipher_list = ALL:!aNULL:!eNULL:!LOW:!MEDIUM:!EXP:!RC2:!RC4:!DES:!3DES:!MD5:!PSK:!SRP:!DSS:!AECDH:!ADH:@STRENGTH
+ssl_prefer_server_ciphers = yes # Dovecot > 2.2.x
+ssl_dh_parameters_length = 2048 # Dovecot > 2.2.x
+
+Si un jour vous oubliez le mot de passe du compte administrateur, cette procédure permet de le changer :
+
+# On génère le hash correspondant au mot de passe
+doveadm pw -s MD5-CRYPT -p MOT_DE_PASSE | sed 's/{MD5-CRYPT}//'
+
+mysql -u root -p
+
+mysql> connect postfix
+mysql> UPDATE admin SET password = 'HASH' WHERE username = 'admin@domain.tld';
+
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> quit
+
+
+service postfix restart
+service dovecot restart
+
+netstat -ptna
+Active Internet connections (servers and established)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        0      0 0.0.0.0:143             0.0.0.0:*               LISTEN      14244/dovecot       
+tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      804/nginx: master p 
+tcp        0      0 0.0.0.0:2802            0.0.0.0:*               LISTEN      794/sshd            
+tcp        0      0 0.0.0.0:25              0.0.0.0:*               LISTEN      14428/master        
+tcp        0      0 0.0.0.0:993             0.0.0.0:*               LISTEN      14244/dovecot       
+tcp        0      0 127.0.0.1:3306          0.0.0.0:*               LISTEN      3526/mysqld         
+tcp        0      0 0.0.0.0:587             0.0.0.0:*               LISTEN      14428/master        
 
 
 
