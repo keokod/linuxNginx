@@ -1,0 +1,20 @@
+telnet localhost 25
+Trying 127.0.0.1...
+Connected to localhost.
+Escape character is '^]'.
+220 pandan.domain.tld ESMTP Postfix (Debian/GNU)
+ehlo localhost 
+250-pandan.domain.tld
+250-PIPELINING
+250-SIZE 502400000
+250-ETRN
+250-STARTTLS   #==> ok
+250-ENHANCEDSTATUSCODES
+250-8BITMIME
+250 DSN
+
+ufw allow 25
+ufw allow 993
+ufw allow 857
+
+
